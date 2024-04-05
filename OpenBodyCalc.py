@@ -6,6 +6,10 @@ app.title("OpenBodyCalc")
 
 tabview = CTkTabview(master=app)
 
+#theme
+set_default_color_theme("green")
+set_appearance_mode("light")
+
 tabview.pack(fill = BOTH, expand = True)
 
 tabview.add("BMI")
