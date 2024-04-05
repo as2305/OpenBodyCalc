@@ -22,14 +22,6 @@ tabview.add("About")
 def CalcBMI():
     bmi_calculation = float(weight1.get()) / (float(height1.get())*float(height1.get()))
     bmi.configure(text="Your BMI is "+str(bmi_calculation))
-    if bmi_calculation <= 18.5:
-        bmi_indicator.configure(text="UNDERWEIGHT", text_color="blue")
-    elif bmi_calculation <= 24.9:
-        bmi_indicator.configure(text="HEALTHY", text_color="green")
-    elif bmi_calculation <= 29.9:
-        bmi_indicator.configure(text="OVERWEIGHT", text_color="orange")
-    elif bmi_calculation > 30:
-        bmi_indicator.configure(text="OBESITY", text_color="red")
 
 label1 = CTkLabel(master=tabview.tab("BMI"), text="BMI")
 label1.place(relx=0.5, rely=0.3, anchor="center")
@@ -45,9 +37,6 @@ calculate1.place(relx=0.5, rely=0.6, anchor="center")
 
 bmi = CTkLabel(master=tabview.tab("BMI"), text=None)
 bmi.place(relx=0.5, rely=0.7, anchor="center")
-
-bmi_indicator = CTkLabel(master=tabview.tab("BMI"), text="HELLO")
-bmi_indicator.place(relx=0.5, rely=0.8, anchor="center")
 
 #HRMax
 def CalcHRMax():
