@@ -13,7 +13,8 @@ set_appearance_mode("light")
 tabview.pack(fill = BOTH, expand = True)
 
 tabview.add("BMI")
-tabview.add("HRMax")
+tabview.add("HRMAX")
+tabview.add("VO2MAX")
 tabview.add("About")
 
 
@@ -43,14 +44,30 @@ def CalcHRMax():
     hrm.configure(text="Your HR Max is "+str(hrc))
 
 
-label2 = CTkLabel(master=tabview.tab("HRMax"), text="Heart Rate Max")
+label2 = CTkLabel(master=tabview.tab("HRMAX"), text="Heart Rate Max")
 label2.place(relx=0.5, rely=0.3, anchor="center")
-age = CTkEntry(master=tabview.tab("HRMax"), placeholder_text="Age")
+age = CTkEntry(master=tabview.tab("HRMAX"), placeholder_text="Age")
 age.place(relx=0.5, rely=0.4, anchor="center")
-calculate2 = CTkButton(master=tabview.tab("HRMax"), text="Calculate", command=CalcHRMax) 
+calculate2 = CTkButton(master=tabview.tab("HRMAX"), text="Calculate", command=CalcHRMax) 
 calculate2.place(relx=0.5, rely=0.6, anchor="center")
-hrm = CTkLabel(master=tabview.tab("HRMax"), text=None)
+hrm = CTkLabel(master=tabview.tab("HRMAX"), text=None)
 hrm.place(relx=0.5, rely=0.7, anchor="center")
+
+#VO2MAX
+
+def CalcVO2MAX():
+    vo2 = ((22.351*float(distance.get())) - 11.288)
+    vo2m.configure(text="Your VO2Max is "+str(vo2))
+
+label3 = CTkLabel(master=tabview.tab("VO2MAX"), text="VO2Max (Cooper Test)")
+label3.place(relx=0.5, rely=0.3, anchor="center")
+distance = CTkEntry(master=tabview.tab("VO2MAX"), placeholder_text="distance run in 12 minutes (meter)")
+distance.place(relx=0.5, rely=0.4, anchor="center")
+calculate3 = CTkButton(master=tabview.tab("VO2MAX"), text="Calculate", command=CalcVO2MAX)
+calculate3.place(relx=0.5, rely=0.6, anchor="center")
+vo2m = CTkLabel(master=tabview.tab("VO2MAX"), text=None)
+vo2m.place(relx=0.5, rely=0.7, anchor="center")
+
 
 #About
 
