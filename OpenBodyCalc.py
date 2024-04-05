@@ -21,7 +21,7 @@ tabview.add("About")
 #BMI
 def CalcBMI():
     bmi_calculation = float(weight1.get()) / (float(height1.get())*float(height1.get()))
-    bmi.configure(text="Your BMI is "+str(bmi_calculation))
+    bmi.configure(text="Your BMI is "+str(round(bmi_calculation, 1)))
     if bmi_calculation <= 18.5:
         bmi_indicator.configure(text="UNDERWEIGHT", text_color="blue")
     elif bmi_calculation <= 24.9:
@@ -68,7 +68,7 @@ hrm.place(relx=0.5, rely=0.7, anchor="center")
 
 def CalcVO2MAX():
     vo2 = ((22.351*float(distance.get())) - 11.288)
-    vo2m.configure(text="Your VO2Max is "+str(vo2))
+    vo2m.configure(text="Your VO2Max is "+str(round(vo2,1)))
 
 label3 = CTkLabel(master=tabview.tab("VO2MAX"), text="VO2Max (Cooper Test)")
 label3.place(relx=0.5, rely=0.3, anchor="center")
