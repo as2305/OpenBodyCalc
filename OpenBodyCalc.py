@@ -16,6 +16,7 @@ tabview.add("BMI")
 tabview.add("HRMAX")
 tabview.add("VO2MAX")
 tabview.add("About")
+tabview.add("Settings")
 
 
 #BMI
@@ -84,5 +85,21 @@ vo2m.place(relx=0.5, rely=0.7, anchor="center")
 
 about = CTkLabel(master=tabview.tab("About"), text="This program calculates basic health metrics.\n It is written in Python and uses CustomTkinter for GUI") 
 about.place(relx=0.5, rely=0.5, anchor="center")
+
+#Settings
+def radiobutton_event():
+    a = radio_var.get()
+    if a == 1:
+        set_appearance_mode("light")
+    elif a == 2:
+        set_appearance_mode("dark")
+
+themelabel = CTkLabel(master=tabview.tab("Settings"), text="Theme: ")
+themelabel.place(relx=0.3, rely=0.5, anchor="center")
+radio_var = IntVar(value=0)
+radiobutton_1 = CTkRadioButton(master=tabview.tab("Settings"), text="Light",command=radiobutton_event, variable= radio_var, value=1)
+radiobutton_2 = CTkRadioButton(master=tabview.tab("Settings"), text="Dark",command=radiobutton_event, variable= radio_var, value=2)
+radiobutton_1.place(relx=0.5, rely=0.5, anchor="center")
+radiobutton_2.place(relx=0.7, rely=0.5, anchor="center")
 
 app.mainloop()
