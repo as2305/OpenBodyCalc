@@ -13,6 +13,7 @@ set_appearance_mode("light")
 tabview.pack(fill = BOTH, expand = True)
 
 tabview.add("BMI")
+tabview.add("BMR")
 tabview.add("HRMAX")
 tabview.add("VO2MAX")
 tabview.add("About")
@@ -49,6 +50,37 @@ bmi.place(relx=0.5, rely=0.7, anchor="center")
 
 bmi_indicator = CTkLabel(master=tabview.tab("BMI"), text=None)
 bmi_indicator.place(relx=0.5, rely=0.8, anchor="center")
+
+#BMR
+
+def calcBmr():
+    gender_value = bmr_gender.get()
+    if gender_value == 1:
+        val = ((10*int(bmr_weight.get())) + (6.25*int(bmr_height.get())) - (5*int(bmr_age.get())) + 5)
+        bmrOutput.configure(text=str(val)+" calories")
+    elif gender_value == 2:
+        val = ((10*int(bmr_weight.get())) + (6.25*int(bmr_height.get())) - (5*int(bmr_age.get())) - 161)
+        bmrOutput.configure(text=str(val)+" calories")
+
+bmr_label = CTkLabel(master=tabview.tab("BMR"), text="Basal Metabolic Rate")
+bmr_age = CTkEntry(master=tabview.tab("BMR"), placeholder_text="Age")
+bmr_gender = IntVar(value=0)
+male_1 = CTkRadioButton(master=tabview.tab("BMR"), text="Male", variable= bmr_gender, value=1)
+female_2 = CTkRadioButton(master=tabview.tab("BMR"), text="Female", variable= bmr_gender, value=2)
+bmr_height = CTkEntry(master=tabview.tab("BMR"), placeholder_text=("Height in cm"))
+bmr_weight = CTkEntry(master=tabview.tab("BMR"), placeholder_text=("Weight in kgs"))
+calcBmrButton = CTkButton(master=tabview.tab("BMR"), text="Calculate", command=calcBmr)
+bmrOutput = CTkLabel(master=tabview.tab("BMR"), text=None)
+
+bmr_label.place(relx=0.5, rely=0.3, anchor="center")
+bmr_age.place(relx=0.5, rely=0.4, anchor="center")
+male_1.place(relx=0.5, rely=0.5, anchor="center")
+female_2.place(relx=0.6, rely=0.5, anchor="center")
+bmr_height.place(relx=0.5, rely=0.6, anchor="center")
+bmr_weight.place(relx=0.5, rely=0.7, anchor="center")
+calcBmrButton.place(relx=0.5, rely=0.8, anchor="center")
+bmrOutput.place(relx=0.5, rely=0.9, anchor="center")
+
 
 #HRMax
 def CalcHRMax():
