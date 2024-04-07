@@ -134,4 +134,16 @@ radiobutton_2 = CTkRadioButton(master=tabview.tab("Settings"), text="Dark",comma
 radiobutton_1.place(relx=0.5, rely=0.5, anchor="center")
 radiobutton_2.place(relx=0.7, rely=0.5, anchor="center")
 
+fullscreenlabel = CTkLabel(master=tabview.tab("Settings"), text="Fullscreen: ")
+def switch_event():
+    stat = switch_var.get()
+    if stat == "on":
+        app.attributes("-fullscreen", "True")
+    elif stat == "off":
+        app.attributes("-fullscreen", "False")
+switch_var = StringVar(value="off")
+switch = CTkSwitch(master=tabview.tab("Settings"), text=None, command=switch_event,variable=switch_var, onvalue="on", offvalue="off")
+fullscreenlabel.place(relx=0.3, rely=0.7, anchor="center")
+switch.place(relx=0.5, rely=0.7, anchor="center")
+
 app.mainloop()
