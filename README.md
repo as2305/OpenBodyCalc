@@ -1,6 +1,6 @@
 # OpenBodyCalc
 
-OpenBodyCalc is a body metric calculator built using Python. It uses CustomTkitner for GUI. It can calculate the following:
+OpenBodyCalc is a body metric calculator built using Python. It uses CustomTkinter for GUI. It can calculate the following:
 
 
 1. **Body Mass Index (BMI)**: BMI is determined by dividing a person's weight in kilograms twice by their height in meters. 
