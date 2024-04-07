@@ -119,31 +119,34 @@ about = CTkLabel(master=tabview.tab("About"), text="This program calculates basi
 about.place(relx=0.5, rely=0.5, anchor="center")
 
 #Settings
-def radiobutton_event():
+
+def apply():
     a = radio_var.get()
-    if a == 1:
+    b = switch_var.get()
+    if a == 1 and b:
         set_appearance_mode("light")
     elif a == 2:
         set_appearance_mode("dark")
+    if b == "on":
+        app.attributes("-fullscreen", "True")
+    elif b == "off":
+        app.attributes("-fullscreen", "False")
 
 themelabel = CTkLabel(master=tabview.tab("Settings"), text="Theme: ")
 themelabel.place(relx=0.3, rely=0.2, anchor="center")
 radio_var = IntVar(value=1)
-radiobutton_1 = CTkRadioButton(master=tabview.tab("Settings"), text="Light",command=radiobutton_event, variable= radio_var, value=1)
-radiobutton_2 = CTkRadioButton(master=tabview.tab("Settings"), text="Dark",command=radiobutton_event, variable= radio_var, value=2)
+radiobutton_1 = CTkRadioButton(master=tabview.tab("Settings"), text="Light", variable= radio_var, value=1)
+radiobutton_2 = CTkRadioButton(master=tabview.tab("Settings"), text="Dark", variable= radio_var, value=2)
 radiobutton_1.place(relx=0.5, rely=0.2, anchor="center")
 radiobutton_2.place(relx=0.7, rely=0.2, anchor="center")
 
 fullscreenlabel = CTkLabel(master=tabview.tab("Settings"), text="Fullscreen: ")
-def switch_event():
-    stat = switch_var.get()
-    if stat == "on":
-        app.attributes("-fullscreen", "True")
-    elif stat == "off":
-        app.attributes("-fullscreen", "False")
 switch_var = StringVar(value="off_")
-switch = CTkSwitch(master=tabview.tab("Settings"), text=None, command=switch_event,variable=switch_var, onvalue="on", offvalue="off")
+switch = CTkSwitch(master=tabview.tab("Settings"), text=None,variable=switch_var, onvalue="on", offvalue="off")
 fullscreenlabel.place(relx=0.3, rely=0.3, anchor="center")
 switch.place(relx=0.5, rely=0.3, anchor="center")
+
+apply_btn = CTkButton(master=tabview.tab("Settings"), text="Apply", command=apply)
+apply_btn.place(relx=0.5, rely=0.4, anchor="center")
 
 app.mainloop()
